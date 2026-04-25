@@ -14,139 +14,40 @@
             --bg-light: #f1f5f9;
         }
         
-        body { 
-            background-color: var(--bg-light); 
-            font-family: 'Inter', 'Segoe UI', sans-serif; 
-            color: #334155;
-        }
-        
-        /* Modern Login */
-        .login-container { 
-            height: 100vh; 
-            display: flex; 
-            align-items: center; 
-            justify-content: center; 
-            background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
-        }
-        .login-card { 
-            width: 100%; 
-            max-width: 400px; 
-            padding: 3rem 2rem; 
-            border-radius: 20px; 
-            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5); 
-            background: white; 
-            text-align: center; 
-        }
-
-        /* Sidebar Glassmorphism Style */
+        body { background-color: var(--bg-light); font-family: 'Inter', 'Segoe UI', sans-serif; color: #334155; }
+        .login-container { height: 100vh; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #1e293b 0%, #334155 100%); }
+        .login-card { width: 100%; max-width: 400px; padding: 3rem 2rem; border-radius: 20px; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5); background: white; text-align: center; }
         #dashboard-page { display: none; }
-        .sidebar { 
-            width: var(--sidebar-width); 
-            height: 100vh; 
-            position: fixed; 
-            background: var(--primary-dark); 
-            color: white; 
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); 
-            z-index: 1000;
-            box-shadow: 4px 0 10px rgba(0,0,0,0.1);
-        }
-        .main-content { 
-            margin-left: var(--sidebar-width); 
-            padding: 2.5rem; 
-            transition: all 0.3s ease; 
-        }
-        
-        .nav-link { 
-            color: #94a3b8; 
-            border-radius: 12px; 
-            margin-bottom: 8px; 
-            padding: 12px 15px;
-            transition: all 0.2s;
-        }
-        .nav-link:hover, .nav-link.active { 
-            color: white !important; 
-            background: var(--accent-color) !important;
-            transform: translateX(5px);
-        }
-        
-        /* Enhanced Cards */
-        .status-card { 
-            border: none;
-            border-radius: 16px;
-            background: white;
-            padding: 1.5rem;
-            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-        .status-card:hover { 
-            transform: translateY(-8px);
-            box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1);
-        }
-        .status-card::after {
-            content: '';
-            position: absolute;
-            left: 0; top: 0; bottom: 0;
-            width: 6px;
-        }
+        .sidebar { width: var(--sidebar-width); height: 100vh; position: fixed; background: var(--primary-dark); color: white; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); z-index: 1000; box-shadow: 4px 0 10px rgba(0,0,0,0.1); }
+        .main-content { margin-left: var(--sidebar-width); padding: 2.5rem; transition: all 0.3s ease; }
+        .nav-link { color: #94a3b8; border-radius: 12px; margin-bottom: 8px; padding: 12px 15px; transition: all 0.2s; cursor: pointer; text-decoration: none; display: block; }
+        .nav-link:hover, .nav-link.active { color: white !important; background: var(--accent-color) !important; transform: translateX(5px); }
+        .status-card { border: none; border-radius: 16px; background: white; padding: 1.5rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); transition: all 0.3s ease; position: relative; overflow: hidden; }
+        .status-card::after { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 6px; }
         .card-total::after { background: #3b82f6; }
         .card-pending::after { background: #f59e0b; }
         .card-approved::after { background: #10b981; }
         .card-rejected::after { background: #ef4444; }
         .card-proses::after { background: #8b5cf6; }
         .card-selesai::after { background: #06b6d4; }
-
-        /* Navigation Controls */
         .sidebar.collapsed { margin-left: calc(var(--sidebar-width) * -1); }
         .main-content.expanded { margin-left: 0; }
         #toggle-btn { cursor: pointer; font-size: 1.8rem; color: var(--primary-dark); transition: 0.3s; }
-        #toggle-btn:hover { color: var(--accent-color); }
-
         .content-section { display: none; animation: fadeIn 0.4s ease-out; }
         .content-section.active { display: block; }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .form-control, .form-select {
-            border-radius: 10px;
-            padding: 12px;
-            border: 1px solid #e2e8f0;
-        }
-        .form-control:focus {
-            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
-            border-color: var(--accent-color);
-        }
-        
-        .btn-primary {
-            background: var(--accent-color);
-            border: none;
-            border-radius: 10px;
-            padding: 12px 25px;
-            font-weight: 600;
-            transition: all 0.3s;
-        }
-        .btn-primary:hover {
-            background: #2563eb;
-            transform: scale(1.02);
-        }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .form-control, .form-select { border-radius: 10px; padding: 12px; border: 1px solid #e2e8f0; }
+        .btn-primary { background: var(--accent-color); border: none; border-radius: 10px; padding: 12px 25px; font-weight: 600; transition: all 0.3s; }
     </style>
 </head>
 <body>
 
     <div id="login-page" class="login-container">
         <div class="login-card">
-            <div class="mb-4">
-                <i class="bi bi-ticket-perforated-fill text-primary" style="font-size: 5rem; filter: drop-shadow(0 10px 8px rgba(59,130,246,0.3));"></i>
-            </div>
+            <div class="mb-4"><i class="bi bi-ticket-perforated-fill text-primary" style="font-size: 5rem;"></i></div>
             <h2 class="fw-bold mb-2">E-Tiket Portal</h2>
-            <p class="text-muted mb-4">Pengajuan Perpindahan Data Base Cabang v1.0</p>
-            <button onclick="login()" class="btn btn-primary btn-lg w-100 shadow">
-                Masuk ke Dashboard <i class="bi bi-arrow-right ms-2"></i>
-            </button>
+            <p class="text-muted mb-4">Pengajuan Perpindahan Data Base Cabang v1.2</p>
+            <button onclick="login()" class="btn btn-primary btn-lg w-100 shadow">Masuk ke Dashboard <i class="bi bi-arrow-right ms-2"></i></button>
         </div>
     </div>
 
@@ -154,89 +55,43 @@
         <div class="sidebar d-flex flex-column p-4">
             <div class="d-flex align-items-center mb-5 justify-content-center">
                 <i class="bi bi-lightning-charge-fill text-primary fs-3 me-2"></i>
-                <h4 class="mb-0 fw-bold tracking-tight">E-TIKET</h4>
+                <h4 class="mb-0 fw-bold">E-TIKET</h4>
             </div>
-            
             <ul class="nav nav-pills flex-column mb-auto">
                 <li><a onclick="showSection('dashboard-content')" class="nav-link active" id="nav-dashboard"><i class="bi bi-grid-1x2-fill me-3"></i> Dashboard</a></li>
                 <li><a onclick="showSection('jadwal-content')" class="nav-link" id="nav-jadwal"><i class="bi bi-calendar-check me-3"></i> Pindah Jadwal</a></li>
                 <li><a onclick="showSection('anggota-content')" class="nav-link" id="nav-anggota"><i class="bi bi-people-fill me-3"></i> Pindah Anggota</a></li>
                 <li><a onclick="showSection('staf-content')" class="nav-link" id="nav-staf"><i class="bi bi-person-badge-fill me-3"></i> Pindah Staf</a></li>
-                
-                <div class="section-divider"><small class="text-uppercase text-muted fw-bold opacity-50 px-2">Administrator</small></div>
-                
+                <div class="section-divider my-3"><small class="text-uppercase text-muted fw-bold opacity-50 px-2">Administrator</small></div>
                 <li><a onclick="aksesMenuProteksi('approval-content', 'manager123')" class="nav-link" id="nav-approval"><i class="bi bi-shield-lock-fill me-3"></i> Approval</a></li>
                 <li><a onclick="aksesMenuProteksi('mis-content', 'mis123')" class="nav-link" id="nav-mis"><i class="bi bi-bar-chart-line-fill me-3"></i> Data MIS</a></li>
             </ul>
-
             <div class="mt-auto pt-4 border-top border-secondary">
-                <button onclick="logout()" class="btn btn-outline-danger w-100 border-0 text-start px-3">
-                    <i class="bi bi-box-arrow-left me-3"></i> Log Out
-                </button>
+                <button onclick="logout()" class="btn btn-outline-danger w-100 border-0 text-start px-3"><i class="bi bi-box-arrow-left me-3"></i> Log Out</button>
             </div>
         </div>
 
         <main class="main-content">
             <header class="d-flex justify-content-between align-items-center mb-5">
                 <div class="d-flex align-items-center">
-                    <i class="bi bi-text-indent-left" id="toggle-btn" onclick="toggleSidebar()"></i>
-                    <div class="ms-4">
-                        <h2 class="mb-0 fw-bold text-dark" id="section-title">Status Tiket</h2>
-                        <p class="text-muted mb-0">Klik Ikon >= untuk geser halaman.</p>
-                    </div>
+                    <i class="bi bi-list" id="toggle-btn" onclick="toggleSidebar()"></i>
+                    <div class="ms-4"><h2 class="mb-0 fw-bold text-dark" id="section-title">Status Tiket</h2><p class="text-muted mb-0">Klik Icon 3 Garis Untuk Menampilkan Form </p></div>
                 </div>
                 <div class="bg-white px-4 py-2 rounded-pill shadow-sm border border-light">
-                    <i class="bi bi-calendar3 me-2 text-primary"></i>
-                    <span class="fw-medium">Kamis, 23 April 2026</span>
+                    <i class="bi bi-calendar3 me-2 text-primary"></i><span class="fw-medium" id="current-date"></span>
                 </div>
             </header>
 
             <div id="dashboard-content" class="content-section active">
                 <div class="row g-4 mb-5">
-                    <div class="col-md-3">
-                        <div class="status-card card-total">
-                            <small class="text-uppercase text-muted fw-bold">Total Tiket</small>
-                            <h2 class="display-6 fw-bold mt-2" id="dash-total">0</h2>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="status-card card-pending">
-                            <small class="text-uppercase text-muted fw-bold">Pending</small>
-                            <h2 class="display-6 fw-bold mt-2 text-warning" id="dash-pending">0</h2>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="status-card card-approved">
-                            <small class="text-uppercase text-muted fw-bold">Approved</small>
-                            <h2 class="display-6 fw-bold mt-2 text-success" id="dash-approved">0</h2>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="status-card card-rejected">
-                            <small class="text-uppercase text-muted fw-bold">Rejected</small>
-                            <h2 class="display-6 fw-bold mt-2 text-danger" id="dash-rejected">0</h2>
-                        </div>
-                    </div>
+                    <div class="col-md-3"><div class="status-card card-total"><small class="text-muted fw-bold">TOTAL TIKET</small><h2 class="display-6 fw-bold mt-2" id="dash-total">...</h2></div></div>
+                    <div class="col-md-3"><div class="status-card card-pending"><small class="text-muted fw-bold">PENDING</small><h2 class="display-6 fw-bold mt-2 text-warning" id="dash-pending">...</h2></div></div>
+                    <div class="col-md-3"><div class="status-card card-approved"><small class="text-muted fw-bold">APPROVED</small><h2 class="display-6 fw-bold mt-2 text-success" id="dash-approved">...</h2></div></div>
+                    <div class="col-md-3"><div class="status-card card-rejected"><small class="text-muted fw-bold">REJECTED</small><h2 class="display-6 fw-bold mt-2 text-danger" id="dash-rejected">...</h2></div></div>
                 </div>
                 <div class="row g-4">
-                    <div class="col-md-6">
-                        <div class="status-card card-proses d-flex justify-content-between align-items-center">
-                            <div>
-                                <small class="text-uppercase text-muted fw-bold">Sedang Proses MIS</small>
-                                <h2 class="display-6 fw-bold mt-2 text-purple" id="dash-proses-mis">0</h2>
-                            </div>
-                            <i class="bi bi-gear-wide-connected fs-1 opacity-25"></i>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="status-card card-selesai d-flex justify-content-between align-items-center">
-                            <div>
-                                <small class="text-uppercase text-muted fw-bold">Sudah Di Proses</small>
-                                <h2 class="display-6 fw-bold mt-2 text-info" id="dash-selesai-mis">0</h2>
-                            </div>
-                            <i class="bi bi-check-all fs-1 opacity-25"></i>
-                        </div>
-                    </div>
+                    <div class="col-md-6"><div class="status-card card-proses d-flex justify-content-between align-items-center"><div><small class="text-muted fw-bold">SEDANG DIPROSES MIS</small><h2 class="display-6 fw-bold mt-2 text-primary" id="dash-proses-mis">...</h2></div><i class="bi bi-gear-fill fs-1 opacity-25"></i></div></div>
+                    <div class="col-md-6"><div class="status-card card-selesai d-flex justify-content-between align-items-center"><div><small class="text-muted fw-bold">SUDAH DIPROSES MIS</small><h2 class="display-6 fw-bold mt-2 text-info" id="dash-selesai-mis">...</h2></div><i class="bi bi-check-circle-fill fs-1 opacity-25"></i></div></div>
                 </div>
             </div>
 
@@ -245,13 +100,13 @@
                     <h4 class="mb-4 fw-bold"><i class="bi bi-clock-history me-3 text-primary"></i>Formulir Perpindahan Jadwal</h4>
                     <form id="formJadwal">
                         <div class="row g-4">
-                            <div class="col-md-6"><label class="form-label fw-semibold">Nama Staf</label><select class="form-select staff-dropdown shadow-sm" id="namaStafJadwal"><option value="">-- Pilih Staf --</option></select></div>
-                            <div class="col-md-6"><label class="form-label fw-semibold">Kode Center</label><select class="form-select center-dropdown shadow-sm" id="kodeCenterJadwal"><option value="">-- Pilih Kode --</option></select></div>
-                            <div class="col-md-3"><label class="form-label fw-semibold">Hari Lama</label><select class="form-select shadow-sm" id="hariLamaJadwal"><option value="">-- Pilih Hari --</option><option>Senin</option><option>Selasa</option><option>Rabu</option><option>Kamis</option><option>Jumat</option></select></div>
-                            <div class="col-md-3"><label class="form-label fw-semibold">Hari Baru</label><select class="form-select shadow-sm" id="hariBaruJadwal"><option value="">-- Pilih Hari --</option><option>Senin</option><option>Selasa</option><option>Rabu</option><option>Kamis</option><option>Jumat</option></select></div>
-                            <div class="col-md-6"><label class="form-label fw-semibold">Status Perubahan</label><select class="form-select shadow-sm" id="statusJadwal"><option value="">-- Pilih Status --</option><option>Sementara</option><option>Seterusnya</option></select></div>
-                            <div class="col-md-12"><label class="form-label fw-semibold">Alasan Perpindahan</label><textarea class="form-control shadow-sm" id="alasanJadwal" rows="4" placeholder="Jelaskan alasan detail..."></textarea></div>
-                            <div class="col-12 pt-3"><button type="button" onclick="kirimTiket('formJadwal', 'Perpindahan Jadwal')" class="btn btn-primary px-5 shadow">Kirim Tiket <i class="bi bi-send ms-2"></i></button></div>
+                            <div class="col-md-6"><label class="form-label">Nama Staf</label><select class="form-select staff-dropdown" id="namaStafJadwal"><option value="">-- Pilih Staf --</option></select></div>
+                            <div class="col-md-6"><label class="form-label">Kode Center</label><select class="form-select center-dropdown" id="kodeCenterJadwal"><option value="">-- Pilih Kode --</option></select></div>
+                            <div class="col-md-3"><label class="form-label">Hari Lama</label><select class="form-select" id="hariLamaJadwal"><option value="">-- Pilih Hari --</option><option>Senin</option><option>Selasa</option><option>Rabu</option><option>Kamis</option><option>Jumat</option></select></div>
+                            <div class="col-md-3"><label class="form-label">Hari Baru</label><select class="form-select" id="hariBaruJadwal"><option value="">-- Pilih Hari --</option><option>Senin</option><option>Selasa</option><option>Rabu</option><option>Kamis</option><option>Jumat</option></select></div>
+                            <div class="col-md-6"><label class="form-label">Status</label><select class="form-select" id="statusJadwal"><option value="">-- Pilih Status --</option><option>Sementara</option><option>Seterusnya</option></select></div>
+                            <div class="col-md-12"><label class="form-label">Alasan</label><textarea class="form-control" id="alasanJadwal" rows="3"></textarea></div>
+                            <div class="col-12"><button type="button" onclick="kirimTiket('formJadwal', 'Perpindahan Jadwal')" class="btn btn-primary submit-btn">Kirim Tiket <span class="spinner-border spinner-border-sm d-none"></span></button></div>
                         </div>
                     </form>
                 </div></div>
@@ -259,19 +114,19 @@
 
             <div id="anggota-content" class="content-section">
                 <div class="card shadow-sm border-0 rounded-4"><div class="card-body p-5">
-                    <h4 class="mb-4 fw-bold"><i class="bi bi-person-plus me-3 text-primary"></i>Formulir Perpindahan Anggota</h4>
+                    <h4 class="mb-4 fw-bold"><i class="bi bi-people-fill me-3 text-primary"></i>Formulir Perpindahan Anggota</h4>
                     <form id="formAnggota">
                         <div class="row g-4">
-                            <div class="col-md-6"><label class="form-label fw-semibold">Nama Staf</label><select class="form-select staff-dropdown shadow-sm" id="namaStafAnggota"><option value="">-- Pilih Staf --</option></select></div>
-                            <div class="col-md-6"><label class="form-label fw-semibold">No ID Anggota</label><input type="text" class="form-control shadow-sm" id="idAnggota" placeholder="Contoh: 12345"></div>
-                            <div class="col-md-12"><label class="form-label fw-semibold">Nama Lengkap Anggota</label><input type="text" class="form-control shadow-sm" id="namaAnggota" placeholder="Nama sesuai KTP/Kartu Anggota"></div>
-                            <div class="col-md-6"><label class="form-label fw-semibold">Dari Center</label><select class="form-select center-dropdown shadow-sm" id="dariCenterAnggota"><option value="">-- Pilih Kode --</option></select></div>
-                            <div class="col-md-6"><label class="form-label fw-semibold">Ke Center</label><select class="form-select center-dropdown shadow-sm" id="keCenterAnggota"><option value="">-- Pilih Kode --</option></select></div>
-                            <div class="col-md-12"><label class="form-label fw-semibold">Pindah Hari Kunjungan?</label><select class="form-select shadow-sm" id="pindahHariCheck" onchange="toggleHariOptions()"><option value="">-- Pilih Opsi --</option><option value="Tidak">Tidak</option><option value="Ya">Ya</option></select></div>
-                            <div class="col-md-6 conditional-days"><label class="form-label fw-semibold">Dari Hari</label><select class="form-select shadow-sm" id="dariHariAnggota"><option value="">-- Pilih Hari --</option><option>Senin</option><option>Selasa</option><option>Rabu</option><option>Kamis</option><option>Jumat</option></select></div>
-                            <div class="col-md-6 conditional-days"><label class="form-label fw-semibold">Ke Hari</label><select class="form-select shadow-sm" id="keHariAnggota"><option value="">-- Pilih Hari --</option><option>Senin</option><option>Selasa</option><option>Rabu</option><option>Kamis</option><option>Jumat</option></select></div>
-                            <div class="col-md-12"><label class="form-label fw-semibold">Alasan</label><textarea class="form-control shadow-sm" id="alasanAnggota" rows="4"></textarea></div>
-                            <div class="col-12 pt-3"><button type="button" onclick="kirimTiket('formAnggota', 'Perpindahan Anggota')" class="btn btn-primary px-5 shadow">Kirim Tiket <i class="bi bi-send ms-2"></i></button></div>
+                            <div class="col-md-6"><label class="form-label">Nama Staf</label><select class="form-select staff-dropdown" id="namaStafAnggota"><option value="">-- Pilih Staf --</option></select></div>
+                            <div class="col-md-6"><label class="form-label">No ID Anggota</label><input type="text" class="form-control" id="idAnggota"></div>
+                            <div class="col-md-12"><label class="form-label">Nama Lengkap Anggota</label><input type="text" class="form-control" id="namaAnggota"></div>
+                            <div class="col-md-6"><label class="form-label">Dari Center</label><select class="form-select center-dropdown" id="dariCenterAnggota"><option value="">-- Pilih Kode --</option></select></div>
+                            <div class="col-md-6"><label class="form-label">Ke Center</label><select class="form-select center-dropdown" id="keCenterAnggota"><option value="">-- Pilih Kode --</option></select></div>
+                            <div class="col-md-12"><label class="form-label">Pindah Hari?</label><select class="form-select" id="pindahHariCheck" onchange="toggleHariOptions()"><option value="Tidak">Tidak</option><option value="Ya">Ya</option></select></div>
+                            <div class="col-md-6 conditional-days" style="display:none"><label class="form-label">Dari Hari</label><select class="form-select" id="dariHariAnggota"><option value="">-- Pilih Hari --</option><option>Senin</option><option>Selasa</option><option>Rabu</option><option>Kamis</option><option>Jumat</option></select></div>
+                            <div class="col-md-6 conditional-days" style="display:none"><label class="form-label">Ke Hari</label><select class="form-select" id="keHariAnggota"><option value="">-- Pilih Hari --</option><option>Senin</option><option>Selasa</option><option>Rabu</option><option>Kamis</option><option>Jumat</option></select></div>
+                            <div class="col-md-12"><label class="form-label">Alasan</label><textarea class="form-control" id="alasanAnggota" rows="3"></textarea></div>
+                            <div class="col-12"><button type="button" onclick="kirimTiket('formAnggota', 'Perpindahan Anggota')" class="btn btn-primary submit-btn">Kirim Tiket <span class="spinner-border spinner-border-sm d-none"></span></button></div>
                         </div>
                     </form>
                 </div></div>
@@ -279,229 +134,73 @@
 
             <div id="staf-content" class="content-section">
                 <div class="card shadow-sm border-0 rounded-4"><div class="card-body p-5">
-                    <h4 class="mb-4 fw-bold"><i class="bi bi-shuffle me-3 text-primary"></i>Formulir Perpindahan Staf</h4>
+                    <h4 class="mb-4 fw-bold"><i class="bi bi-person-badge-fill me-3 text-primary"></i>Formulir Perpindahan Staf</h4>
                     <form id="formStaf">
                         <div class="row g-4">
-                            <div class="col-md-12"><label class="form-label fw-semibold">Kode Center</label><select class="form-select center-dropdown shadow-sm" id="kodeCenterStaf"><option value="">-- Pilih Kode Center --</option></select></div>
-                            <div class="col-md-6"><label class="form-label fw-semibold">Dari Staf (Asal)</label><select class="form-select staff-dropdown shadow-sm" id="dariStaf"><option value="">-- Pilih Staf --</option></select></div>
-                            <div class="col-md-6"><label class="form-label fw-semibold">Ke Staf (Tujuan)</label><select class="form-select staff-dropdown shadow-sm" id="keStaf"><option value="">-- Pilih Staf --</option></select></div>
-                            <div class="col-md-12"><label class="form-label fw-semibold">Alasan Perpindahan</label><textarea class="form-control shadow-sm" id="alasanStaf" rows="4" placeholder="Tuliskan alasan mutasi center ini..."></textarea></div>
-                            <div class="col-12 pt-3"><button type="button" onclick="kirimTiket('formStaf', 'Perpindahan Staf')" class="btn btn-primary px-5 shadow">Kirim Tiket <i class="bi bi-send ms-2"></i></button></div>
+                            <div class="col-md-12"><label class="form-label">Kode Center</label><select class="form-select center-dropdown" id="kodeCenterStaf"><option value="">-- Pilih Kode --</option></select></div>
+                            <div class="col-md-6"><label class="form-label">Dari Staf</label><select class="form-select staff-dropdown" id="dariStaf"><option value="">-- Pilih Staf --</option></select></div>
+                            <div class="col-md-6"><label class="form-label">Ke Staf</label><select class="form-select staff-dropdown" id="keStaf"><option value="">-- Pilih Staf --</option></select></div>
+                            <div class="col-md-12"><label class="form-label">Alasan Perpindahan</label><textarea class="form-control" id="alasanStaf" rows="3"></textarea></div>
+                            <div class="col-12"><button type="button" onclick="kirimTiket('formStaf', 'Perpindahan Staf')" class="btn btn-primary submit-btn">Kirim Tiket <span class="spinner-border spinner-border-sm d-none"></span></button></div>
                         </div>
                     </form>
                 </div></div>
             </div>
 
             <div id="approval-content" class="content-section">
-                <div class="card shadow border-0 rounded-4 overflow-hidden">
-                    <div class="bg-primary p-4"><h5 class="mb-0 text-white fw-bold"><i class="bi bi-check-circle-fill me-2"></i>Antrean Persetujuan Manager</h5></div>
-                    <div class="card-body p-4">
-                        <div class="table-responsive">
-                            <table class="table table-hover align-middle">
-                                <thead class="table-light text-muted">
-                                    <tr><th>KATEGORI</th><th>DETAIL DATA</th><th class="text-center">AKSI</th></tr>
-                                </thead>
-                                <tbody id="approval-list"></tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
+                <div class="card shadow border-0 rounded-4"><div class="bg-primary p-3"><h5 class="mb-0 text-white">Antrean Persetujuan Manager</h5></div><div class="card-body">
+                    <table class="table table-hover align-middle"><thead><tr><th>KATEGORI</th><th>DETAIL DATA</th><th class="text-center">AKSI</th></tr></thead><tbody id="approval-list"></tbody></table>
+                </div></div>
             </div>
 
             <div id="mis-content" class="content-section">
-                <div class="card shadow border-0 rounded-4 overflow-hidden">
-                    <div class="bg-dark p-4"><h5 class="mb-0 text-white fw-bold"><i class="bi bi-database-fill-gear me-2"></i>Dashboard Rekapitulasi Data MIS</h5></div>
-                    <div class="card-body p-4">
-                        <div class="table-responsive">
-                            <table class="table table-bordered table-hover align-middle">
-                                <thead class="table-light">
-                                    <tr><th>KATEGORI</th><th>DETAIL DATA</th><th class="text-center">STATUS</th><th class="text-center">AKSI MIS</th></tr>
-                                </thead>
-                                <tbody id="mis-list"></tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
+                <div class="card shadow border-0 rounded-4"><div class="bg-dark p-3"><h5 class="mb-0 text-white">Data MIS</h5></div><div class="card-body">
+                    <table class="table table-bordered align-middle"><thead><tr><th>KATEGORI</th><th>DETAIL</th><th class="text-center">STATUS</th><th class="text-center">AKSI MIS</th></tr></thead><tbody id="mis-list"></tbody></table>
+                </div></div>
             </div>
         </main>
     </div>
 
     <script>
         const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyPOxJFrtQbgl8VuiJeLEImQpm_T_3iC51ClzefRM3QADZXgBYOZErIzK_zKa1blQVV/exec";
-
         let dataTiket = [];
         const daftarStaf = ["Casdi", "Nono", "Joko", "Iset", "Eka", "Perdi", "Heri", "Rafid", "Sandi", "Elphina", "Lola", "Rangga"];
-        
+
         document.addEventListener('DOMContentLoaded', () => {
+            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            document.getElementById('current-date').innerText = new Date().toLocaleDateString('id-ID', options);
+            
             document.querySelectorAll('.staff-dropdown').forEach(select => {
-                daftarStaf.forEach(staf => {
-                    let opt = document.createElement('option');
-                    opt.value = staf; opt.innerHTML = staf;
-                    select.appendChild(opt);
-                });
+                daftarStaf.forEach(staf => { let opt = document.createElement('option'); opt.value = staf; opt.innerHTML = staf; select.appendChild(opt); });
             });
             document.querySelectorAll('.center-dropdown').forEach(select => {
-                for (let i = 1; i <= 650; i++) {
-                    let val = i.toString().padStart(3, '0');
-                    let opt = document.createElement('option');
-                    opt.value = val; opt.innerHTML = val;
-                    select.appendChild(opt);
-                }
+                for (let i = 1; i <= 650; i++) { let val = i.toString().padStart(3, '0'); let opt = document.createElement('option'); opt.value = val; opt.innerHTML = val; select.appendChild(opt); }
             });
 
             muatDataDariSheets();
-            setInterval(muatDataDariSheets, 30000); 
         });
 
         function muatDataDariSheets() {
-            if (!SCRIPT_URL) return;
-
             fetch(SCRIPT_URL)
                 .then(res => res.json())
                 .then(data => {
-                    dataTiket = data.map(row => ({
-                        id: row[0],
-                        kategori: row[1],
-                        detail: row[2],
-                        status: row[3] || 'Pending',
-                        aksiMIS: row[4] || 'Proses'
+                    if (data.length > 0 && isNaN(data[0][0])) { data.shift(); }
+
+                    dataTiket = data.map(row => ({ 
+                        id: row[0], 
+                        kategori: row[1], 
+                        detail: row[2], 
+                        status: row[3] || 'Pending', 
+                        aksiMIS: row[4] || 'Proses' 
                     }));
                     updateDashboard();
                     renderApproval();
                     renderMIS();
                 })
-                .catch(err => console.error("Gagal sinkronisasi:", err));
-        }
-
-        function aksesMenuProteksi(sectionId, passwordBenar) {
-            const inputPassword = prompt("Akses Terbatas! Masukkan Password:");
-            if (inputPassword === passwordBenar) {
-                showSection(sectionId);
-            } else if (inputPassword !== null) {
-                alert("Password Salah! Akses ditolak.");
-            }
-        }
-
-        function kirimTiket(formId, kategori) {
-            const form = document.getElementById(formId);
-            const inputs = form.querySelectorAll('input, select, textarea');
-            let isError = false;
-            let detailData = "";
-
-            inputs.forEach(input => {
-                if (input.closest('.conditional-days') && document.getElementById('pindahHariCheck').value !== 'Ya') return;
-                if (input.value === "") isError = true;
-                else detailData += `<b>${input.id.replace('form', '')}</b>: ${input.value} | `;
-            });
-
-            if (isError) {
-                alert("Harap lengkapi semua kolom yang wajib diisi!");
-            } else {
-                const newTicket = { 
-                    id: Date.now(), 
-                    kategori: kategori, 
-                    detail: detailData, 
-                    status: 'Pending', 
-                    aksiMIS: 'Proses' 
-                };
-
-                fetch(SCRIPT_URL, {
-                    method: "POST",
-                    mode: 'no-cors',
-                    body: JSON.stringify(newTicket)
-                }).then(() => {
-                    alert("Tiket Anda berhasil dikirim ke antrean Manager.");
-                    form.reset();
-                    if(formId === 'formAnggota') toggleHariOptions();
-                    
-                    dataTiket.push(newTicket);
-                    updateDashboard();
-                    renderApproval(); 
-                    
-                    showSection('dashboard-content');
-                    setTimeout(muatDataDariSheets, 2000);
-                }).catch(err => alert("Gagal terhubung ke database: " + err));
-            }
-        }
-
-        function renderApproval() {
-            const list = document.getElementById('approval-list');
-            list.innerHTML = "";
-            dataTiket.filter(t => t.status === 'Pending').forEach(t => {
-                list.innerHTML += `
-                    <tr>
-                        <td><span class="badge bg-primary-subtle text-primary border">${t.kategori}</span></td>
-                        <td><small class="text-secondary">${t.detail}</small></td>
-                        <td class="text-center">
-                            <button class="btn btn-sm btn-success rounded-pill px-3 me-2" onclick="updateStatus(${t.id}, 'Disetujui')"><i class="bi bi-check-lg"></i> Setuju</button>
-                            <button class="btn btn-sm btn-danger rounded-pill px-3" onclick="updateStatus(${t.id}, 'Ditolak')"><i class="bi bi-x-lg"></i> Tolak</button>
-                        </td>
-                    </tr>`;
-            });
-        }
-
-        function renderMIS() {
-            const list = document.getElementById('mis-list');
-            list.innerHTML = "";
-            dataTiket.filter(t => t.status === 'Disetujui').forEach(t => {
-                const icon = t.aksiMIS === 'Selesai' ? '<i class="bi bi-patch-check-fill text-success fs-3"></i>' : `<button class="btn btn-primary btn-sm rounded-pill" onclick="prosesMIS(${t.id})">Klik Selesai</button>`;
-                list.innerHTML += `
-                    <tr>
-                        <td class="fw-bold">${t.kategori}</td>
-                        <td><small>${t.detail}</small></td>
-                        <td class="text-center"><span class="badge bg-success">Disetujui</span></td>
-                        <td class="text-center">${icon}</td>
-                    </tr>`;
-            });
-        }
-
-        function updateStatus(id, status) {
-            const index = dataTiket.findIndex(t => t.id === id);
-            if (index !== -1) {
-                // Update Lokal untuk respons cepat
-                dataTiket[index].status = status;
-                updateDashboard();
-                renderApproval();
-                renderMIS();
-
-                // Kirim perubahan ke Google Sheets
-                fetch(SCRIPT_URL, {
-                    method: "POST",
-                    mode: 'no-cors',
-                    body: JSON.stringify({
-                        action: "updateStatus",
-                        id: id,
-                        status: status
-                    })
-                }).then(() => {
-                    console.log("Status berhasil diperbarui di server");
-                    setTimeout(muatDataDariSheets, 1500);
+                .catch(err => {
+                    console.error("Gagal sinkronisasi:", err);
+                    resetDashboardToZero();
                 });
-            }
-        }
-
-        function prosesMIS(id) {
-            const index = dataTiket.findIndex(t => t.id === id);
-            if (index !== -1) {
-                // Update Lokal
-                dataTiket[index].aksiMIS = 'Selesai';
-                updateDashboard();
-                renderMIS();
-
-                // Kirim perubahan ke Google Sheets
-                fetch(SCRIPT_URL, {
-                    method: "POST",
-                    mode: 'no-cors',
-                    body: JSON.stringify({
-                        action: "updateMIS",
-                        id: id,
-                        aksiMIS: 'Selesai'
-                    })
-                }).then(() => {
-                    console.log("Status MIS berhasil diperbarui di server");
-                    setTimeout(muatDataDariSheets, 1500);
-                });
-            }
         }
 
         function updateDashboard() {
@@ -513,34 +212,101 @@
             document.getElementById('dash-selesai-mis').innerText = dataTiket.filter(t => t.status === 'Disetujui' && t.aksiMIS === 'Selesai').length;
         }
 
-        function showSection(sectionId) {
+        function resetDashboardToZero() {
+            const ids = ['dash-total', 'dash-pending', 'dash-approved', 'dash-rejected', 'dash-proses-mis', 'dash-selesai-mis'];
+            ids.forEach(id => { if(document.getElementById(id)) document.getElementById(id).innerText = "0"; });
+        }
+
+        function kirimTiket(formId, kategori) {
+            const form = document.getElementById(formId);
+            const btn = form.querySelector('.submit-btn');
+            const inputs = form.querySelectorAll('input, select, textarea');
+            let detailData = ""; let isError = false;
+
+            inputs.forEach(input => {
+                if (input.closest('.conditional-days') && document.getElementById('pindahHariCheck').value !== 'Ya') return;
+                if (input.value === "") isError = true;
+                else detailData += `[${input.id.replace('form','').toUpperCase()}]: ${input.value} | `;
+            });
+
+            if (isError) { alert("Mohon lengkapi semua data!"); return; }
+            
+            btn.disabled = true; btn.querySelector('.spinner-border').classList.remove('d-none');
+
+            const newTicket = { id: Date.now(), kategori: kategori, detail: detailData, status: 'Pending', aksiMIS: 'Proses' };
+
+            fetch(SCRIPT_URL, { method: "POST", body: JSON.stringify(newTicket) })
+                .then(() => {
+                    alert("Tiket Berhasil Terkirim! Sudah Masuk Antrean Approval Manager");
+                    form.reset();
+                    muatDataDariSheets();
+                    showSection('dashboard-content');
+                })
+                .finally(() => { 
+                    btn.disabled = false; 
+                    btn.querySelector('.spinner-border').classList.add('d-none'); 
+                });
+        }
+
+        function updateStatus(id, status, btnElement) {
+            // Efek Loading pada tombol yang diklik
+            const originalText = btnElement.innerHTML;
+            btnElement.disabled = true;
+            btnElement.innerHTML = `<span class="spinner-border spinner-border-sm"></span>`;
+
+            fetch(SCRIPT_URL, { 
+                method: "POST", 
+                body: JSON.stringify({ action: "updateStatus", id: id, status: status }) 
+            })
+            .then(() => muatDataDariSheets())
+            .catch(err => {
+                console.error(err);
+                btnElement.disabled = false;
+                btnElement.innerHTML = originalText;
+                alert("Gagal memperbarui status.");
+            });
+        }
+
+        function prosesMIS(id) {
+            fetch(SCRIPT_URL, { method: "POST", body: JSON.stringify({ action: "updateMIS", id: id, aksiMIS: 'Selesai' }) })
+            .then(() => muatDataDariSheets());
+        }
+
+        function renderApproval() {
+            const list = document.getElementById('approval-list'); list.innerHTML = "";
+            dataTiket.filter(t => t.status === 'Pending').forEach(t => {
+                list.innerHTML += `
+                <tr>
+                    <td><span class="badge bg-primary">${t.kategori}</span></td>
+                    <td><small>${t.detail}</small></td>
+                    <td class="text-center">
+                        <button class="btn btn-sm btn-success me-1" onclick="updateStatus(${t.id}, 'Disetujui', this)">Setuju</button>
+                        <button class="btn btn-sm btn-danger" onclick="updateStatus(${t.id}, 'Ditolak', this)">Tolak</button>
+                    </td>
+                </tr>`;
+            });
+        }
+
+        function renderMIS() {
+            const list = document.getElementById('mis-list'); list.innerHTML = "";
+            dataTiket.filter(t => t.status === 'Disetujui').forEach(t => {
+                const action = t.aksiMIS === 'Selesai' ? '<i class="bi bi-patch-check-fill text-success fs-4"></i>' : `<button class="btn btn-primary btn-sm" onclick="prosesMIS(${t.id})">Selesai</button>`;
+                list.innerHTML += `<tr><td>${t.kategori}</td><td><small>${t.detail}</small></td><td class="text-center"><span class="badge bg-success">Disetujui</span></td><td class="text-center">${action}</td></tr>`;
+            });
+        }
+
+        function showSection(id) {
             document.querySelectorAll('.content-section').forEach(s => s.classList.remove('active'));
             document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
-            document.getElementById(sectionId).classList.add('active');
-            let navId = 'nav-' + sectionId.split('-')[0];
-            if(document.getElementById(navId)) document.getElementById(navId).classList.add('active');
-            
-            const titles = { 'dashboard-content': 'Status Tiket Terkini', 'jadwal-content': 'Perpindahan Jadwal', 'anggota-content': 'Perpindahan Anggota', 'staf-content': 'Perpindahan Staf', 'approval-content': 'Approval Manager', 'mis-content': 'Rekap Data MIS' };
-            document.getElementById('section-title').innerText = titles[sectionId];
+            document.getElementById(id).classList.add('active');
+            if(document.getElementById('nav-' + id.split('-')[0])) document.getElementById('nav-' + id.split('-')[0]).classList.add('active');
         }
 
-        function toggleHariOptions() {
-            const isPindah = document.getElementById('pindahHariCheck').value;
-            document.querySelectorAll('.conditional-days').forEach(el => el.style.display = (isPindah === 'Ya' ? 'block' : 'none'));
-        }
-
-        function toggleSidebar() {
-            document.querySelector('.sidebar').classList.toggle('collapsed');
-            document.querySelector('.main-content').classList.toggle('expanded');
-        }
-
-        function login() { 
-            document.getElementById('login-page').style.display = 'none'; 
-            document.getElementById('dashboard-page').style.display = 'block'; 
-            muatDataDariSheets();
-        }
-        
-        function logout() { if(confirm('Apakah Anda yakin ingin keluar dari sistem?')) { location.reload(); } }
+        function toggleHariOptions() { const isPindah = document.getElementById('pindahHariCheck').value; document.querySelectorAll('.conditional-days').forEach(el => el.style.display = (isPindah === 'Ya' ? 'block' : 'none')); }
+        function toggleSidebar() { document.querySelector('.sidebar').classList.toggle('collapsed'); document.querySelector('.main-content').classList.toggle('expanded'); }
+        function login() { document.getElementById('login-page').style.display = 'none'; document.getElementById('dashboard-page').style.display = 'block'; }
+        function logout() { location.reload(); }
+        function aksesMenuProteksi(id, pass) { if (prompt("Masukkan Password Admin:") === pass) showSection(id); else alert("Salah!"); }
     </script>
 </body>
 </html>
