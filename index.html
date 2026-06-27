@@ -18,9 +18,7 @@
         .login-container { height: 100vh; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #1e293b 0%, #334155 100%); }
         .login-card { width: 100%; max-width: 400px; padding: 3rem 2rem; border-radius: 20px; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5); background: white; text-align: center; }
         #dashboard-page { display: none; }
-        .sidebar { width: var(--sidebar-width); height: 100vh; height: 100dvh; position: fixed; top: 0; left: 0; background: var(--primary-dark); color: white; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); z-index: 1000; box-shadow: 4px 0 10px rgba(0,0,0,0.1); overflow: hidden; display: flex; flex-direction: column; }
-        .sidebar-scroll { overflow-y: auto; flex: 1 1 auto; min-height: 0; }
-        .sidebar-footer { flex-shrink: 0; }
+        .sidebar { width: var(--sidebar-width); height: 100vh; position: fixed; top: 0; left: 0; background: var(--primary-dark); color: white; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); z-index: 1000; box-shadow: 4px 0 10px rgba(0,0,0,0.1); overflow-y: auto; }
         .main-content { margin-left: var(--sidebar-width); padding: 2.5rem; transition: all 0.3s ease; }
         .sidebar-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 999; }
         .sidebar-overlay.show { display: block; }
@@ -66,23 +64,21 @@
 
     <div id="dashboard-page">
         <div class="sidebar-overlay" id="sidebar-overlay" onclick="closeSidebarMobile()"></div>
-        <div class="sidebar p-4" id="sidebar-el">
-            <div class="sidebar-scroll">
-                <div class="d-flex align-items-center mb-5 justify-content-center">
-                    <i class="bi bi-lightning-charge-fill text-primary fs-3 me-2"></i>
-                    <h4 class="mb-0 fw-bold">E-TIKET</h4>
-                </div>
-                <ul class="nav nav-pills flex-column">
-                    <li><a onclick="showSection('dashboard-content')" class="nav-link active" id="nav-dashboard"><i class="bi bi-grid-1x2-fill me-3"></i> Dashboard</a></li>
-                    <li><a onclick="showSection('jadwal-content')" class="nav-link" id="nav-jadwal"><i class="bi bi-calendar-check me-3"></i> Pindah Jadwal</a></li>
-                    <li><a onclick="showSection('anggota-content')" class="nav-link" id="nav-anggota"><i class="bi bi-people-fill me-3"></i> Pindah Anggota</a></li>
-                    <li><a onclick="showSection('staf-content')" class="nav-link" id="nav-staf"><i class="bi bi-person-badge-fill me-3"></i> Pindah Staf</a></li>
-                    <div class="section-divider my-3"><small class="text-uppercase text-muted fw-bold opacity-50 px-2">Administrator</small></div>
-                    <li><a onclick="aksesMenuProteksi('approval-content', 'manager123')" class="nav-link" id="nav-approval"><i class="bi bi-shield-lock-fill me-3"></i> Approval</a></li>
-                    <li><a onclick="aksesMenuProteksi('mis-content', 'mztxa2026')" class="nav-link" id="nav-mis"><i class="bi bi-bar-chart-line-fill me-3"></i> Data MIS</a></li>
-                </ul>
+        <div class="sidebar d-flex flex-column p-4" id="sidebar-el">
+            <div class="d-flex align-items-center mb-5 justify-content-center">
+                <i class="bi bi-lightning-charge-fill text-primary fs-3 me-2"></i>
+                <h4 class="mb-0 fw-bold">E-TIKET</h4>
             </div>
-            <div class="sidebar-footer pt-4 border-top border-secondary">
+            <ul class="nav nav-pills flex-column mb-auto">
+                <li><a onclick="showSection('dashboard-content')" class="nav-link active" id="nav-dashboard"><i class="bi bi-grid-1x2-fill me-3"></i> Dashboard</a></li>
+                <li><a onclick="showSection('jadwal-content')" class="nav-link" id="nav-jadwal"><i class="bi bi-calendar-check me-3"></i> Pindah Jadwal</a></li>
+                <li><a onclick="showSection('anggota-content')" class="nav-link" id="nav-anggota"><i class="bi bi-people-fill me-3"></i> Pindah Anggota</a></li>
+                <li><a onclick="showSection('staf-content')" class="nav-link" id="nav-staf"><i class="bi bi-person-badge-fill me-3"></i> Pindah Staf</a></li>
+                <div class="section-divider my-3"><small class="text-uppercase text-muted fw-bold opacity-50 px-2">Administrator</small></div>
+                <li><a onclick="aksesMenuProteksi('approval-content', 'manager123')" class="nav-link" id="nav-approval"><i class="bi bi-shield-lock-fill me-3"></i> Approval</a></li>
+                <li><a onclick="aksesMenuProteksi('mis-content', 'mztxa2026')" class="nav-link" id="nav-mis"><i class="bi bi-bar-chart-line-fill me-3"></i> Data MIS</a></li>
+            </ul>
+            <div class="mt-auto pt-4 border-top border-secondary">
                 <button onclick="logout()" class="btn btn-outline-danger w-100 border-0 text-start px-3"><i class="bi bi-box-arrow-left me-3"></i> Log Out</button>
             </div>
         </div>
@@ -283,9 +279,20 @@
             });
         }
 
-        function prosesMIS(id) {
+        function prosesMIS(id, btnElement) {
+            // Efek Loading pada tombol yang diklik
+            const originalText = btnElement.innerHTML;
+            btnElement.disabled = true;
+            btnElement.innerHTML = `<span class="spinner-border spinner-border-sm"></span>`;
+
             fetch(SCRIPT_URL, { method: "POST", body: JSON.stringify({ action: "updateMIS", id: id, aksiMIS: 'Selesai' }) })
-            .then(() => muatDataDariSheets());
+            .then(() => muatDataDariSheets())
+            .catch(err => {
+                console.error(err);
+                btnElement.disabled = false;
+                btnElement.innerHTML = originalText;
+                alert("Gagal memperbarui data MIS.");
+            });
         }
 
         function renderApproval() {
@@ -306,7 +313,7 @@
         function renderMIS() {
             const list = document.getElementById('mis-list'); list.innerHTML = "";
             dataTiket.filter(t => t.status === 'Disetujui').forEach(t => {
-                const action = t.aksiMIS === 'Selesai' ? '<i class="bi bi-patch-check-fill text-success fs-4"></i>' : `<button class="btn btn-primary btn-sm" onclick="prosesMIS(${t.id})">Selesai</button>`;
+                const action = t.aksiMIS === 'Selesai' ? '<i class="bi bi-patch-check-fill text-success fs-4"></i>' : `<button class="btn btn-primary btn-sm" onclick="prosesMIS(${t.id}, this)">Selesai</button>`;
                 list.innerHTML += `<tr><td>${t.kategori}</td><td><small>${t.detail}</small></td><td class="text-center"><span class="badge bg-success">Disetujui</span></td><td class="text-center">${action}</td></tr>`;
             });
         }
