@@ -57,7 +57,7 @@
         <div class="login-card">
             <div class="mb-4"><i class="bi bi-ticket-perforated-fill text-primary" style="font-size: 5rem;"></i></div>
             <h2 class="fw-bold mb-2">E-Tiket Portal</h2>
-            <p class="text-muted mb-4">Pengajuan Perpindahan Data Base Cabang v1.1.0 | Last Update : 20 Juni 2026 : Perbaiki Tampilan Pengisian Tiket</p>
+            <p class="text-muted mb-4">Pengajuan Perpindahan Data Base Cabang v1.2.0 | Last Update : 20 Juli 2026 </p>
             <button onclick="login()" class="btn btn-primary btn-lg w-100 shadow">Masuk ke Dashboard <i class="bi bi-arrow-right ms-2"></i></button>
         </div>
     </div>
@@ -161,7 +161,7 @@
 
             <div id="approval-content" class="content-section">
                 <div class="card shadow border-0 rounded-4"><div class="bg-primary p-3"><h5 class="mb-0 text-white">Antrean Persetujuan Manager</h5></div><div class="card-body">
-                    <table class="table table-hover align-middle"><thead><tr><th>KATEGORI</th><th>DETAIL DATA</th><th class="text-center">AKSI</th></tr></thead><tbody id="approval-list"></tbody></table>
+                    <table class="table table-hover align-middle"><thead><tr><th>KATEGORI</th><th>DETAIL DATA</th><th>WAKTU KIRIM</th><th class="text-center">AKSI</th></tr></thead><tbody id="approval-list"></tbody></table>
                 </div></div>
             </div>
 
@@ -295,6 +295,15 @@
             });
         }
 
+        function formatWaktuKirim(id) {
+            const ts = Number(id);
+            if (!ts || isNaN(ts)) return '-';
+            const d = new Date(ts);
+            const tgl = d.toLocaleDateString('id-ID', { day: '2-digit', month: 'short', year: 'numeric' });
+            const jam = d.toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit' });
+            return `${tgl}<br><small class="text-muted">${jam} WIB</small>`;
+        }
+
         function renderApproval() {
             const list = document.getElementById('approval-list'); list.innerHTML = "";
             dataTiket.filter(t => t.status === 'Pending').forEach(t => {
@@ -302,6 +311,7 @@
                 <tr>
                     <td><span class="badge bg-primary">${t.kategori}</span></td>
                     <td><small>${t.detail}</small></td>
+                    <td><small>${formatWaktuKirim(t.id)}</small></td>
                     <td class="text-center">
                         <button class="btn btn-sm btn-success me-1" onclick="updateStatus(${t.id}, 'Disetujui', this)">Setuju</button>
                         <button class="btn btn-sm btn-danger" onclick="updateStatus(${t.id}, 'Ditolak', this)">Tolak</button>
