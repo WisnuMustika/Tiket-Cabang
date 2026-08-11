@@ -57,7 +57,7 @@
         <div class="login-card">
             <div class="mb-4"><i class="bi bi-ticket-perforated-fill text-primary" style="font-size: 5rem;"></i></div>
             <h2 class="fw-bold mb-2">E-Tiket Portal</h2>
-            <p class="text-muted mb-4">Pengajuan Perpindahan Data Base Cabang v1.2.0 | Last Update : 20 Juli 2026 </p>
+            <p class="text-muted mb-4">Pengajuan Perpindahan Data Base Cabang v1.3.0 | Last Update : 11 Agustus 2026 </p>
             <button onclick="login()" class="btn btn-primary btn-lg w-100 shadow">Masuk ke Dashboard <i class="bi bi-arrow-right ms-2"></i></button>
         </div>
     </div>
@@ -134,7 +134,7 @@
                             <div class="col-md-12"><label class="form-label">Nama Lengkap Anggota</label><input type="text" class="form-control" id="namaAnggota"></div>
                             <div class="col-md-6"><label class="form-label">Dari Center</label><select class="form-select center-dropdown" id="dariCenterAnggota"><option value="">-- Pilih Kode --</option></select></div>
                             <div class="col-md-6"><label class="form-label">Ke Center</label><select class="form-select center-dropdown" id="keCenterAnggota"><option value="">-- Pilih Kode --</option></select></div>
-                            <div class="col-md-12"><label class="form-label">Pindah Hari?</label><select class="form-select" id="pindahHariCheck" onchange="toggleHariOptions()"><option value="Tidak">Tidak</option><option value="Ya">Ya</option></select></div>
+                            <div class="col-md-12"><label class="form-label">Pindah Hari?</label><select class="form-select" id="pindahHariCheck" onchange="toggleHariOptions()"><option value="">-- Pilih Opsi --</option><option value="Tidak">Tidak</option><option value="Ya">Ya</option></select></div>
                             <div class="col-md-6 conditional-days" style="display:none"><label class="form-label">Dari Hari</label><select class="form-select" id="dariHariAnggota"><option value="">-- Pilih Hari --</option><option>Senin</option><option>Selasa</option><option>Rabu</option><option>Kamis</option><option>Jumat</option></select></div>
                             <div class="col-md-6 conditional-days" style="display:none"><label class="form-label">Ke Hari</label><select class="form-select" id="keHariAnggota"><option value="">-- Pilih Hari --</option><option>Senin</option><option>Selasa</option><option>Rabu</option><option>Kamis</option><option>Jumat</option></select></div>
                             <div class="col-md-12"><label class="form-label">Alasan</label><textarea class="form-control" id="alasanAnggota" rows="3"></textarea></div>
@@ -176,7 +176,7 @@
     <script>
         const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyPOxJFrtQbgl8VuiJeLEImQpm_T_3iC51ClzefRM3QADZXgBYOZErIzK_zKa1blQVV/exec";
         let dataTiket = [];
-        const daftarStaf = ["Casdi", "Nono", "Joko", "Iset", "Eka", "Perdi", "Sandi", "Lola", "Rangga"," Ari"," Desta","Abu"];
+        const daftarStaf = ["Casdi", "Nono Sutrisno", "Joko Prasetyo", "Iset Panji Nugraha", "Eka Ramadhan", "Perdi Irawan Saputra", "Muhamad Sandi", "Lola Dwi Setiawan", "Rangga Erlando"," Ari Sundapa"," Desta Adi Triana","Agil Leo Saputra"];
 
         document.addEventListener('DOMContentLoaded', () => {
             const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
