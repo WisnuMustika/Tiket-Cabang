@@ -15,7 +15,24 @@
         }
         
         body { background-color: var(--bg-light); font-family: 'Inter', 'Segoe UI', sans-serif; color: #334155; }
-        .login-container { height: 100vh; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #1e293b 0%, #334155 100%); }
+        .login-container {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            background:
+                linear-gradient(rgba(15, 23, 42, 0.62), rgba(15, 23, 42, 0.72)),
+                url('https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=1920&q=85')
+                center center / cover no-repeat;
+        }
+        @media (max-width: 768px) {
+            .login-container {
+                min-height: 100svh;
+                background-position: center center;
+            }
+        }
         .login-card { width: 100%; max-width: 400px; padding: 3rem 2rem; border-radius: 20px; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5); background: white; text-align: center; }
         #dashboard-page { display: none; }
         .sidebar { width: var(--sidebar-width); height: 100vh; position: fixed; top: 0; left: 0; background: var(--primary-dark); color: white; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); z-index: 1000; box-shadow: 4px 0 10px rgba(0,0,0,0.1); overflow-y: auto; }
